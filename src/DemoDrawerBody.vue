@@ -1,7 +1,7 @@
 <script setup>
 import { useDrawerService } from './use_drawer';
 
-const { emitClose, emitOk } = useDrawerService()
+const { emitClose, emitOk } = useDrawerService();
 
 function close() {
   emitClose();

@@ -33,6 +33,7 @@
     ],
     "extends": [
       "eslint:recommended",
+      "plugin:vue/vue3-recommended",
       "plugin:prettier/recommended"
     ]
   },
@@ -41,6 +42,7 @@
     "eslint": "^8.0.0",
     "eslint-config-prettier": "^8.0.0",
     "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-vue": "^9.8.0",
     "prettier": "^2.0.0",
     "sass": "^1.57.1",
     "vite": "^4.0.4"

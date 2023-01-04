@@ -3,32 +3,31 @@ import { onMounted, provide, ref } from 'vue';
 import { DRAWER_HANDLER } from './keys';
 
 const props = defineProps({
-  emitClose: { type: Function },
-  emitOk: { type: Function },
+  emitClose: { type: Function, required: true },
+  emitOk: { type: Function, required: true },
   width: { type: String, default: '70%' },
   closeOnMask: { type: Boolean, default: true },
   customClass: { type: String, default: '' },
-})
+});
 
-const emit = defineEmits(['clickOnMask'])
 const canShowBody = ref(false);
 
 onMounted(() => {
   setTimeout(() => {
     canShowBody.value = true;
-  }, 0)
-})
+  }, 0);
+});
 
 const wrappedEmitClose = () => {
   canShowBody.value = false;
   setTimeout(() => {
     props.emitClose();
-  }, 330)
+  }, 330);
 };
 
-const wrappedEmitOk = (data) => {
-  props.emitOk(data)
-}
+const wrappedEmitOk = data => {
+  props.emitOk(data);
+};
 
 provide(DRAWER_HANDLER, {
   emitClose: wrappedEmitClose,
@@ -37,21 +36,19 @@ provide(DRAWER_HANDLER, {
 
 function clickOnMask() {
   if (props.closeOnMask) {
-    wrappedEmitClose()
+    wrappedEmitClose();
   }
 }
 </script>
 
 <template>
   <div class="drawer-container" :class="customClass">
-    <div class="mask" @click="clickOnMask">
-    </div>
+    <div class="mask" @click="clickOnMask"></div>
     <transition name="fade-in-right">
       <div v-if="canShowBody" class="body" :style="{ width }">
         <slot></slot>
       </div>
     </transition>
-
   </div>
 </template>
 
