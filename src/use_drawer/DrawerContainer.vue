@@ -104,7 +104,7 @@ function clickOnMask() {
     left: 0;
     z-index: 3;
 
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: rgba(0, 0, 0, 0.5);
   }
 
   .body {
@@ -112,8 +112,10 @@ function clickOnMask() {
     top: 0;
     right: 0;
     bottom: 0;
-    background-color: white;
+    background-color: #fff;
     z-index: 10;
+    box-shadow: 0px 16px 48px 16px rgba(0, 0, 0, 0.08), 0px 12px 32px rgba(0, 0, 0, 0.12),
+      0px 8px 16px -8px rgba(0, 0, 0, 0.16);
   }
 }
 </style>

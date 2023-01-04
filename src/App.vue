@@ -18,5 +18,6 @@ function showDrawer() {
 </script>
 
 <template>
+  <h1>Drawer Demo</h1>
   <button @click="showDrawer">Show Drawer</button>
 </template>

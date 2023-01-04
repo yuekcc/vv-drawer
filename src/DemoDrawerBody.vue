@@ -14,8 +14,8 @@ function submit() {
 </script>
 
 <template>
-  <div>
-    <h1>Demo Drawer Body</h1>
+  <div style="padding: 20px">
+    <h2>Demo Drawer Body</h2>
     <div>
       <button @click="close">Close</button>
       <button @click="submit">Submit</button>

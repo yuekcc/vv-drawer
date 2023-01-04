@@ -41,6 +41,16 @@ function makeDrawerComponent(options, clean) {
   };
 }
 
+/**
+ * 打开一个 Drawer 窗口
+ * @returns {(options: {
+ *  component: object;
+ *  onClose: () => void;
+ *  onOk: (data: unknown) => void;
+ *  closeOnMask?: boolean;
+ *  width?: string;
+ *  customClass?: string }) => void}
+ */
 export function useDrawer() {
   let el = null;
   let app = null;
@@ -66,6 +76,10 @@ export function useDrawer() {
   };
 }
 
+/**
+ * 使用 Drawer 服务，用于获取 Drawer 窗口的控制函数
+ * @returns {{emitClose: () => void; emitOk: (data: unknown) => void;}}
+ */
 export function useDrawerService() {
   return inject(DRAWER_HANDLER);
 }
