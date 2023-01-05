@@ -1,5 +1,5 @@
 <script setup>
-import { useDrawer } from './use_drawer';
+import { useDrawer } from '../dist/vv-drawer.mjs';
 import DemoDrawerBody from './DemoDrawerBody.vue';
 
 const openDrawer = useDrawer();
@@ -7,6 +7,9 @@ const openDrawer = useDrawer();
 function showDrawer() {
   window.forceCloseDrawer = openDrawer({
     component: DemoDrawerBody,
+    propsData: {
+      title: 'Title is here',
+    },
     onClose: () => {
       console.log('#onClose');
     },

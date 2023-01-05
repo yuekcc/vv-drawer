@@ -1,11 +1,13 @@
 {
   "name": "vv-drawer",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "./dist/vv-drawer.umd.js",
+  "module": "./dist/vv-drawer.mjs",
   "scripts": {
-    "vite": "vite"
+    "demo": "vite -c demo.config.js",
+    "build": "vite build -c lib.config.js"
   },
-  "author": "no_name",
+  "author": "zhanlefeng",
   "license": "MIT",
   "prettier": {
     "arrowParens": "avoid",

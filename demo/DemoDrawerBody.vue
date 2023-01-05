@@ -1,5 +1,9 @@
 <script setup>
-import { useDrawerService } from './use_drawer';
+import { useDrawerService } from '../dist/vv-drawer.mjs';
+
+defineProps({
+  title: { type: String, required: true },
+});
 
 const { emitClose, emitOk } = useDrawerService();
 
@@ -15,7 +19,7 @@ function submit() {
 
 <template>
   <div style="padding: 20px">
-    <h2>Demo Drawer Body</h2>
+    <h2>{{ title }}</h2>
     <div>
       <button @click="close">Close</button>
       <button @click="submit">Submit</button>
