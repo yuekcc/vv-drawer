@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "./dist/vv-drawer.umd.js",
   "module": "./dist/vv-drawer.mjs",
+  "types": "types/index.d.ts",
   "scripts": {
     "demo": "vite -c demo.config.js",
     "build": "vite build -c lib.config.js"

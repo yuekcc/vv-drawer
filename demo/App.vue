@@ -4,8 +4,8 @@ import DemoDrawerBody from './DemoDrawerBody.vue';
 
 const openDrawer = useDrawer();
 
-function showDrawer() {
-  window.forceCloseDrawer = openDrawer({
+function showDemoDrawer() {
+  openDrawer({
     component: DemoDrawerBody,
     propsData: {
       title: 'Title is here',
@@ -21,6 +21,6 @@ function showDrawer() {
 </script>
 
 <template>
-  <h1>Drawer Demo</h1>
-  <button @click="showDrawer">Show Drawer</button>
+  <h1>VV-Drawer</h1>
+  <button @click="showDemoDrawer">Open</button>
 </template>

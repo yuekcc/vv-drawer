@@ -1,21 +1,36 @@
-import { createApp, h, inject, onMounted, ref } from 'vue';
+import { createApp, h, inject, onMounted, ref, defineComponent } from 'vue';
 import DrawerContainer from './DrawerContainer.vue';
 import { DRAWER_HANDLER } from './keys';
 
+const PlaceholderComponent = {
+  setup() {
+    return () => h('div', null, 'Drawer Body');
+  },
+};
 
+const DEFAULT_OPTIONS = {
+  component: PlaceholderComponent,
+  propsData: null,
+  onClose: () => {},
+  onOk: data => data,
+  width: '70%',
+  closeOnMask: true,
+  customClass: '',
+};
 
 function makeDrawerComponent(options, clean) {
-  const { component, onClose, onOk, width, closeOnMask, customClass, propsData } = options;
+  const { component, onClose, onOk, width, closeOnMask, customClass, propsData } = { ...DEFAULT_OPTIONS, ...options };
 
-  return {
+  return defineComponent({
+    name: 'DrawerWrapper',
     setup() {
-      const canShowDrawerContainer = ref(false);
+      const canShow = ref(false);
       onMounted(() => {
-        canShowDrawerContainer.value = true;
+        canShow.value = true;
       });
 
       const wrappedEmitClose = () => {
-        canShowDrawerContainer.value = false;
+        canShow.value = false;
         onClose();
         setTimeout(clean, 0);
       };
@@ -33,25 +48,18 @@ function makeDrawerComponent(options, clean) {
       };
 
       return () => {
-        if (canShowDrawerContainer.value) {
+        if (canShow.value) {
           return h(DrawerContainer, drawerContainerProps, { default: () => h(component, propsData) });
         }
 
         return null;
       };
     },
-  };
+  });
 }
 
 /**
  * 打开一个 Drawer 窗口
- * @returns {(options: {
- *  component: object;
- *  onClose: () => void;
- *  onOk: (data: unknown) => void;
- *  closeOnMask?: boolean;
- *  width?: string;
- *  customClass?: string }) => void}
  */
 export function useDrawer() {
   let el = null;
@@ -80,7 +88,6 @@ export function useDrawer() {
 
 /**
  * 使用 Drawer 服务，用于获取 Drawer 窗口的控制函数
- * @returns {{emitClose: () => void; emitOk: (data: unknown) => void;}}
  */
 export function useDrawerService() {
   return inject(DRAWER_HANDLER);
