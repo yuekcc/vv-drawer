@@ -1,6 +1,8 @@
 # vv-drawer
 
-基于 Vue3 实现的 Drawer 组件，使用 hook 风格 API。
+基于 Vue3 实现的 [Drawer 组件][intro]，使用 hook 风格 API。
+
+[intro]: https://element-plus.org/zh-CN/component/drawer.html
 
 ## 使用
 
